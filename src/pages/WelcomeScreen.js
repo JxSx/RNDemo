@@ -1,10 +1,24 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet,StatusBar, Dimensions,Image, Animated} from 'react-native';
 import NavigationUtil from "../utils/NavigationUtil";
 
+const maxWidth = Dimensions.get('window').width;
+const maxHeight = Dimensions.get('window').height;
 export default class WelcomeScreen extends React.Component {
 
+
+  constructor(props){
+    super(props);
+    this.state = {
+      fadeAnim: new Animated.Value(0.5),
+    }
+  }
+
   componentDidMount() {
+    Animated.timing(this.state.fadeAnim, {
+      duration: 2000,
+      toValue: 1
+    }).start();//开始
 
     this.timer = setTimeout(() => {
       NavigationUtil.reset(this.props.navigation, 'Main');
@@ -21,11 +35,17 @@ export default class WelcomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container,{opacity: this.state.fadeAnim}]}>
+        <StatusBar
+          backgroundColor="#F5FCFF"
+          barStyle="dark-content"
+          translucent ={true}
+        />
+
         <Text>
           Welcome to React Native!
         </Text>
-      </View>
+      </Animated.View>
     );
   }
 }
