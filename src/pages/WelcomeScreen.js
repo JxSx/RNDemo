@@ -36,15 +36,18 @@ export default class WelcomeScreen extends React.Component {
   render() {
     return (
       <Animated.View style={[styles.container,{opacity: this.state.fadeAnim}]}>
+
+        {/*translucent为true，应用会在状态栏之下绘制（即所谓“沉浸式”——被状态栏遮住一部分）。常和带有半透明背景色的状态栏搭配使用。*/}
         <StatusBar
-          backgroundColor="#F5FCFF"
-          barStyle="dark-content"
-          translucent ={true}
+          backgroundColor="transparent"
+          translucent
         />
 
-        <Text>
+        <Image source={require('../img/splash.png')} style={{width: maxWidth, height: maxHeight}}/>
+
+        {/*<Text>
           Welcome to React Native!
-        </Text>
+        </Text>*/}
       </Animated.View>
     );
   }

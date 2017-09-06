@@ -20,7 +20,7 @@ const MainScreenNavigator = TabNavigator({
   // Video: {screen: VideoScreen},
   Resource: {screen: ResourceScreen},
 }, {
-  tabBarPosition: 'bottom',
+  tabBarPosition: 'top',
   swipeEnabled: false,
   lazy: true,
   // tabBarOptions: {
