@@ -19,7 +19,9 @@ Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br
    > emulator -avd [name] 
  4. 部署Apk，并运行：
    > react-native run-android 
- 5. 触发模拟器菜单键【在某些模拟器上无法启用菜单键，可以通过命令行操作】：
+ 5. 开启开发者菜单【Ctrl+M】：
    > adb shell input keyevent 82 
- 6. Debug模式链接：
+ 6. 开启packager服务【操作4部署apk同时也会开启packager服务】
+   > react-native start 
+ 7. Debug模式链接：
    > http://localhost:8081/debugger-ui
