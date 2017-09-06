@@ -11,7 +11,44 @@ export default class WebPage extends React.Component {
     const {params} = this.props.navigation.state;
     return (
       <View style={styles.container}>
+        {/*WebView API链接：http://reactnative.cn/docs/0.48/webview.html#content*/}
         <WebView
+          ref={(ref) => {
+            this.webview = ref;
+          }}
+          style={styles.base}
+          source={{uri: params.url}}
+          javaScriptEnabled
+          domStorageEnabled
+          decelerationRate="normal"
+          startInLoadingState
+          scalesPageToFit
+          onShouldStartLoadWithRequest={() => {
+            return true;
+          }}
+          renderLoading={() => <LoadingView/>}
+          onLoad={() => console.log('load success')}
+          onError={() => console.log('load failure')}
+          onLoadEnd={() => console.log('onLoadEnd:加载结束时（无论成功或失败）调用')}
+          onLoadStart={() => console.log('onLoadStart')}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  base: {
+    flex: 1,
+    height: 200
+  },
+});
+
+/*
+<WebView
           ref={(ref) => {
             this.webview = ref;
           }}
@@ -26,19 +63,4 @@ export default class WebPage extends React.Component {
           }}
           renderLoading={() => <LoadingView/>}
         />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#FFF'
-  },
-  base: {
-    flex: 1,
-    height:200
-  },
-});
+ */
