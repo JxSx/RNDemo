@@ -7,8 +7,9 @@ import ProfileScreen from './pages/ProfileScreen'
 import WelcomeScreen from './pages/WelcomeScreen'
 import VideoScreen from "./pages/VideoScreen";
 import ResourceScreen from "./pages/ResourceScreen";
-import WebPage from "./pages/WebPage";
+import WebScreen from "./pages/WebScreen";
 import BaseListScreen from "./pages/BaseListScreen";
+import global from "./global";
 
 
 /**
@@ -47,9 +48,19 @@ const App = StackNavigator({
     }
   },
   Profile: {screen: ProfileScreen},
-  Web: {screen: WebPage},
+  Web: {screen: WebScreen},
 }, {
-  headerMode: 'screen'
+  headerMode: 'screen',
+  navigationOptions: {
+    headerTintColor:`${global.titleTextColor}`,
+    headerStyle: {
+      backgroundColor:`${global.titleBackgroundColor}`
+    },
+    headerTitleStyle:{
+      color:`${global.titleTextColor}`
+    },
+    gesturesEnabled:true,
+  }
 });
 
 export default App;

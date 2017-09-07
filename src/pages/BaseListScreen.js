@@ -22,9 +22,9 @@ export default class BaseListScreen extends React.Component {
     this.requestData(1)
   }
 
-  _onPressItem = (url) => {
+  _onPressItem = (title, url) => {
     const {navigate} = this.props.navigation;
-    navigate('Web', {url})
+    navigate('Web', {'title':title, url})
   };
 
   _renderItem = (item) => (

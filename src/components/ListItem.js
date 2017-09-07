@@ -9,7 +9,8 @@ export default class ListItem extends React.Component {
   }
 
   _onPress = () => {
-    this.props.onPressItem(this.props.data.item.url);
+    const item = this.props.data.item;
+    this.props.onPressItem(item.desc, item.url);
   };
 
   render() {

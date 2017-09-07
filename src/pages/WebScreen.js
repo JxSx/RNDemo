@@ -2,9 +2,17 @@ import React from 'react';
 import {StyleSheet, Text, View, WebView} from 'react-native';
 import LoadingView from "../components/LoadingView";
 
-export default class WebPage extends React.Component {
+export default class WebScreen extends React.Component {
+
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title
+  });
+
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      title:''
+    }
   }
 
   render() {
@@ -26,6 +34,7 @@ export default class WebPage extends React.Component {
           onShouldStartLoadWithRequest={() => {
             return true;
           }}
+          onNavigationStateChange={this.onNavigationStateChange}
           renderLoading={() => <LoadingView/>}
           onLoad={() => console.log('load success')}
           onError={() => console.log('load failure')}
@@ -34,6 +43,11 @@ export default class WebPage extends React.Component {
         />
       </View>
     );
+  }
+
+  onNavigationStateChange = (navState) => {
+    console.log('navState'+navState.title)
+    // this.props.navigation.setParams({title: navState.title})
   }
 }
 
