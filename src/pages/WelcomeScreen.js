@@ -10,11 +10,16 @@ export default class WelcomeScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      fadeAnim: new Animated.Value(0.5),
+      fadeAnim: new Animated.Value(0),
     }
   }
 
+  componentWillMount() {
+    console.log('componentWillMount');
+  }
+
   componentDidMount() {
+    console.log('componentDidMount');
     Animated.timing(this.state.fadeAnim, {
       duration: 2000,
       toValue: 1
@@ -26,6 +31,7 @@ export default class WelcomeScreen extends React.Component {
   }
 
   componentWillUnmount() {
+    console.log('componentWillUnmount');
     // 请注意Un"m"ount的m是小写
 
     // 如果存在this.timer，则使用clearTimeout清空。
@@ -34,6 +40,7 @@ export default class WelcomeScreen extends React.Component {
   }
 
   render() {
+    console.log('render');
     return (
       <Animated.View style={[styles.container,{opacity: this.state.fadeAnim}]}>
 

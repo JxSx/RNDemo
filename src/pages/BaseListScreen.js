@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList, Text, ActivityIndicator,StyleSheet} from 'react-native';
 import {requestRandomData} from '../api/GankApi';
 import ListItem from "../components/ListItem";
-import WebPage from "./WebPage";
 import LoadingView from "../components/LoadingView";
 
 
@@ -12,13 +11,14 @@ export default class BaseListScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first: true,
       dataList: [],
-      refreshing: true,
-      loadingMore: false,
+      refreshing: false,
+      loadMore: false,
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.requestData(1)
   }
 
@@ -46,19 +46,31 @@ export default class BaseListScreen extends React.Component {
   };
 
   _onEndReached = () => {
-    if (!this.state.refreshing && !this.state.loadingMore) {
+    if (!this.state.refreshing && !this.state.loadMore) {
       this.setState({
-        loadingMore: true
+        loadMore: true
       })
       this.requestData(++page);
     }
+  };
+
+  _onFooterComponent = () => {
+    return (
+      <View style={styles.footerStyle}>
+        <ActivityIndicator
+          style={styles.indicatorStyle}
+          size="large"
+        />
+      </View>
+    )
   };
 
   requestData = (page) => {
     requestRandomData(this.props.category, page)
       .then((result) => {
         this.setState({
-          loadingMore: false,
+          first: false,
+          loadMore: false,
           refreshing: false,
           dataList: page == 1 ? result.results : this.state.dataList.concat(result.results),
         })
@@ -66,20 +78,44 @@ export default class BaseListScreen extends React.Component {
   };
 
   render() {
+
+    let content;
+
+    if (this.state.first) {
+      content = (<LoadingView/>);
+    } else {
+      content = (<FlatList
+        initialNumToRender={10}
+        data={this.state.dataList}
+        keyExtractor={(item, index) => item._id}
+        renderItem={this._renderItem}
+        onRefresh={this._onRefresh}
+        refreshing={this.state.refreshing}
+        ItemSeparatorComponent={this._dividerLine}
+        onEndReachedThreshold={0.1}
+        onEndReached={this._onEndReached}
+        ListFooterComponent={this._onFooterComponent}
+      />);
+    }
+
     return (
-      <View>
-        <FlatList
-          initialNumToRender={10}
-          data={this.state.dataList}
-          keyExtractor={(item, index) => item._id}
-          renderItem={this._renderItem}
-          onRefresh={this._onRefresh}
-          refreshing={this.state.refreshing}
-          ItemSeparatorComponent={this._dividerLine}
-          onEndReachedThreshold={0.3}
-          onEndReached={this._onEndReached}
-        />
+      <View style={{flex: 1}}>
+        {content}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  footerStyle: {
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#DDD'
+  },
+  indicatorStyle: {
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});

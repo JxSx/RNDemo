@@ -9,7 +9,7 @@ export default class IOSScreen extends BaseListScreen {
   };
 
   render() {
-    return <View>
+    return <View  style={{flex:1}}>
       <BaseListScreen category="iOS"/>
     </View>
   }

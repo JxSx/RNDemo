@@ -10,7 +10,7 @@ export default class ResourceScreen extends BaseListScreen {
   };
 
   render() {
-    return <View>
+    return <View  style={{flex:1}}>
       <BaseListScreen category="拓展资源"/>
     </View>
   }
