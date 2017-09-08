@@ -24,6 +24,7 @@ export default class BaseListScreen extends React.Component {
 
   _onPressItem = (title, url) => {
     const {navigate} = this.props.navigation;
+    console.log(this.props.navigation);
     navigate('Web', {'title':title, url})
   };
 

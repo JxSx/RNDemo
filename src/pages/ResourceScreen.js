@@ -11,7 +11,7 @@ export default class ResourceScreen extends BaseListScreen {
 
   render() {
     return <View  style={{flex:1}}>
-      <BaseListScreen category="拓展资源"/>
+      <BaseListScreen category="拓展资源"  navigation={this.props.navigation}/>
     </View>
   }
 }

@@ -10,7 +10,7 @@ export default class IOSScreen extends BaseListScreen {
 
   render() {
     return <View  style={{flex:1}}>
-      <BaseListScreen category="iOS"/>
+      <BaseListScreen category="iOS"  navigation={this.props.navigation}/>
     </View>
   }
 }
