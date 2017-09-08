@@ -1,36 +1,46 @@
 import React from 'react';
-import {View} from 'react-native';
 import {StackNavigator, TabNavigator} from 'react-navigation';
-import AndroidScreen from './pages/AndroidScreen';
-import IOSScreen from './pages/IOSScreen';
 import ProfileScreen from './pages/ProfileScreen'
 import WelcomeScreen from './pages/WelcomeScreen'
-import VideoScreen from "./pages/VideoScreen";
-import ResourceScreen from "./pages/ResourceScreen";
 import WebScreen from "./pages/WebScreen";
-import BaseListScreen from "./pages/BaseListScreen";
 import global from "./global";
+import FindScreen from "./pages/FindScreen";
+import MineScreen from "./pages/MineScreen";
+import HomeScreen from "./pages/HomeScreen";
 
 
 /**
  * Tab导航
  */
 const MainScreenNavigator = TabNavigator({
-  Android: {screen: AndroidScreen},
-  iOS: {screen: IOSScreen},
+  Home: {screen: HomeScreen},
+  Find: {screen: FindScreen},
   // Video: {screen: VideoScreen},
-  Resource: {screen: ResourceScreen},
+  Mine: {screen: MineScreen},
 }, {
-  tabBarPosition: 'top',
-  swipeEnabled: false,
-  lazy: true,
-  // tabBarOptions: {
-  //   activeTintColor: '#e91e63',
-  // },
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    activeTintColor:`${global.activeColor}`,
+    inactiveTintColor :`${global.inactiveColor}`,
+    lazy: true,
+    showIcon: true,
+    showLabel:true,
+    upperCaseLabel:false,
+    labelStyle: {
+      fontSize: 10,
+      marginTop: 0,
+      marginBottom: 0,
+    },
+    style: {
+      marginBottom: -2,
+      backgroundColor:'#FFF'
+    },
+  },
+  navigationOptions:{
+    title:'Home'
+  }
 });
-MainScreenNavigator.navigationOptions = {
-  title: 'My Chats',
-};
+
 /**
  * 页面导航
  */
