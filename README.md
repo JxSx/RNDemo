@@ -23,5 +23,7 @@ Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br
    > adb shell input keyevent 82 
  6. 开启packager服务【操作4部署apk同时也会开启packager服务】
    > react-native start 
- 7. Debug模式链接：
+ 7. Android平台JS打包生成bundle文件：
+   > react-native bundle --platform android --entry-file index.android.js --reset-cache --bundle-output android/app/src/main/assets/index.android.bundle --dev false --assets-dest android/app/src/main/res/
+ 8. Debug模式链接：
    > http://localhost:8081/debugger-ui
