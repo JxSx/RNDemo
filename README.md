@@ -30,4 +30,4 @@ Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br
    > http://localhost:8081/debugger-ui
 
 # 效果展示
-![16.gif](http://upload-images.jianshu.io/upload_images/93730-36e3ed5c9c9bdb57.gif?imageMogr2/auto-orient/strip)
+![16.gif](https://github.com/JxSx/RNDemo/blob/master/gif/demo.gif)
