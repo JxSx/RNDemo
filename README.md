@@ -5,7 +5,8 @@ Redux 中文文档：http://cn.redux.js.org/<br/>
 Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br/>
 
 # API
-干货集中营API:http://gank.io/api <br/>
+[干货集中营API](http://gank.io/api) <br/>
+[知乎日报API](https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90)
 
 
 # 常用命令
@@ -27,3 +28,6 @@ Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br
    > react-native bundle --platform android --entry-file index.android.js --reset-cache --bundle-output android/app/src/main/assets/index.android.bundle --dev false --assets-dest android/app/src/main/res/
  8. Debug模式链接：
    > http://localhost:8081/debugger-ui
+
+# 效果展示
+![16.gif](http://upload-images.jianshu.io/upload_images/93730-36e3ed5c9c9bdb57.gif?imageMogr2/auto-orient/strip)
