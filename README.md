@@ -28,6 +28,23 @@ Redux-saga 中文文档：http://leonshi.com/redux-saga-in-chinese/index.html<br
    > react-native bundle --platform android --entry-file index.android.js --reset-cache --bundle-output android/app/src/main/assets/index.android.bundle --dev false --assets-dest android/app/src/main/res/
  8. Debug模式链接：
    > http://localhost:8081/debugger-ui
+   
+# Yarn、React Native的命令行工具（react-native-cli）
+
+Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。
+
+> npm install -g yarn react-native-cli
+
+安装完yarn后同理也要设置镜像源：
+
+> yarn config set registry https://registry.npm.taobao.org --global<br/>
+> yarn config set disturl https://npm.taobao.org/dist --global
+
+如果你遇到`EACCES: permission denied`权限错误，可以尝试运行下面的命令（限linux系统）： `sudo npm install -g yarn react-native-cli.`
+
+安装完yarn之后就可以用yarn代替npm了，例如用`yarn`代替`npm install`命令，用`yarn add 某第三方库名`代替`npm install --save 某第三方库名`。
+
+注意：目前npm5（发文时最新版本为5.0.4）存在安装新库时会删除其他库的问题，导致项目无法正常运行。请尽量使用yarn代替npm操作。
 
 # 效果展示
 ![16.gif](https://github.com/JxSx/RNDemo/blob/master/gif/demo.gif)
